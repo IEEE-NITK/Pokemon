@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+        <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+        }
+        #map{
+            -webkit-transform: translate3d(0,0,0);
+            -webkit-backface-visibility: hidden;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="app" style="background-color: black;width: 100%;height: 100%;">
+            <div id="map" style="margin-left: 50px;margin-top: 50px;width: 1024px;height: 1000px;background-repeat: no-repeat;z-index: -10;background-color: green">
+                <img src="./img/MB2.png" />
+            </div>
+            <div id="controls" style="width: 150px;height: 150px;background-color: black;position: fixed;bottom: 0;left: 0;">
+                    <div id="top">
+                        <img width="25%" src="pacman_files/circle.png">
+                    </div>
+                    <div style="margin-top: 8%;" class="medium">
+                        <span id="left">
+                            <img style="margin-left: 0%;" width="25%" src="pacman_files/circle.png">
+                        </span>
+                        <span id="right">
+                            <img style="margin-left: 45%;" width="25%" src="pacman_files/circle.png">
+                        </span>
+                    </div>
+                    <div id="bottom">
+                        <img style="margin-top: 5%" width="25%" src="pacman_files/circle.png">
+                    </div>
+                </div>
+            <!-- <h1>PhoneGap</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div> -->
+        </div>
+        <div id="pacman" style="position: absolute;z-index: 100px;top: 40px;left: 20px;clear: both;">
+            <img src="pacman_files/f1.gif" />
+        </div>
+        <!-- // <script type="text/javascript" src="cordova.js"></script> -->
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.4.min.js"></script>
+        <script type="text/javascript" src="./pacman_files/move.min.js"></script>
+        <!-- // <script type="text/javascript" src="js/index.js"></script> -->
+
+        <script type="text/javascript">
+        
+        // $(".app").on("taphold",function(event){
+        //     alert('TAP HELD');
+        //     console.log(event);
+        // });
+        
+        // var map=[
+        // [0,1,0,0,0,0],
+        // [0,1,,1,1,1],
+        // [0,1,,1,1,1],
+        // [0,1,,1,1,1],
+        // ]
+
+        var hand_event = 0;
+        var CELL_WIDTH_HEIGHT = 32;
+
+
+
+            // $("#right").on("click", function () {
+            //     moveTo($("#map"), -1,0);
+            //     console.log("Right");
+            // })
+    
+
+            // $("#left").on("click", function () {
+            //     moveTo($("#map"), 1,0);
+            //     console.log("Right");
+            // })
+
+            // $("#top").on("click", function () {
+            //     moveTo($("#map"), 0,1);
+            //     console.log("Right");
+            // })
+
+            // $("#bottom").on("click", function () {
+            //     moveTo($("#map"), 0,-1);
+            //     console.log("Right");
+            // })
+
+
+
+
+            // Right
+            $("#right").on("vmousedown", function(event){
+              clearInterval(window["hand_event"]);
+              window["hand_event"]=setInterval(function(){
+                moveTo($("#map"), -1,0);
+                console.log("Right");
+              }, 300);
+            });
+
+            $("#right").on("vmouseup", function(event){
+                clearInterval(window["hand_event"]);
+            });
+
+            // Left
+            $("#left").on("vmousedown", function(event){
+              clearInterval(window["hand_event"]);
+              window["hand_event"]=setInterval(function(){
+                moveTo($("#map"), 1,0);
+                console.log("left");
+              }, 300);
+            });
+
+            $("#left").on("vmouseup", function(event){
+                clearInterval(window["hand_event"]);
+            });
+
+            // Top
+            $("#top").on("vmousedown", function(event){
+              clearInterval(window["hand_event"]);
+              window["hand_event"]=setInterval(function(){
+                moveTo($("#map"), 0,1);
+                console.log("Top");
+              }, 300);
+            });
+
+            $("#top").on("vmouseup", function(event){
+                clearInterval(window["hand_event"]);
+            });
+
+            // Bottom
+            $("#bottom").on("vmousedown", function(event){
+              clearInterval(window["hand_event"]);
+              window["hand_event"]=setInterval(function(){
+                moveTo($("#map"), 0,-1);
+                console.log("Down");
+              }, 300);
+            });
+
+            $("#bottom").on("vmouseup", function(event){
+                clearInterval(window["hand_event"]);
+            });
+        // });
+
+        function Pacman(){
+            this.cellX = 0;
+            this.cellY = 0;
+        }
+
+        Pacman.prototype.moveTo = function(xincr, yincr) {
+            this.cellX += xincr;
+            this.cellY += yincr;
+            console.log("X = "+ this.cellX + "Y = "+ this.cellY);
+            move("#map").x((this.cellX)*CELL_WIDTH_HEIGHT).y((this.cellY)*CELL_WIDTH_HEIGHT).end();
+        }
+
+        var pacman = new Pacman();
+
+        function moveTo(element, xincr, yincr){
+            var number=0;
+            var column=0;
+            var pos_x = pacman.cellX + xincr;
+            var pos_y = pacman.cellY + yincr
+            console.log("PACMAN IS AT = "+ pos_x + "Y = "+ pos_y);
+            if (pos_x <= 0 && pos_y <= 0 && pos_x < 1024 && pos_y < 1024)
+                pacman.moveTo(xincr, yincr);
+        }
+
+        </script>
+
+        <script type="text/javascript">
+            // app.initialize();
+        </script>
+    </body>
+</html>
