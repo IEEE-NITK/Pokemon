@@ -3,16 +3,19 @@
 <head>
 <title>Pokemon - Login</title>
 <link rel="stylesheet" href="css/loginstyle.css" media="screen" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/connect.js"></script>
 </head>
 <body>
 	 <div class="login-wrap" style="margin-top:4%;padding:1px;">
   <h2>Register</h2>
 
   <div class="form">
-    <input type="text" placeholder="Email address" name="un" />
-    <input type="password" placeholder="Password" name="pw" />
-    <input type="password" placeholder="Confirm Password" name="pw" />
-    <button> Register </button>
+    <input type="text" placeholder="Email address" name="un" id="emailidreg"/>
+    <input type="password" placeholder="Password" name="pw" id="passwdreg"/>
+    <input type="password" placeholder="Confirm Password" name="pw" id="cnfmpasswd"/>
+    <button onclick="registersend('http://192.168.2.1:3000/users/');"> Register </button>
+    <p id="regsuccess">Successful. Login Below</p>
     <a href="login.html"> <p> Login Here </p></a>
   </div>
 </div>
