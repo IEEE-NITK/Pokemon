@@ -56,4 +56,31 @@ html .login-wrap .form button {
   font-size: 18px;
   font-weight: 200;
 }
+html .login-wrap .form button:active{
+    background: #6ACDA7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+#regsuccess {
+  display: none;
+  color: #2F8E4F;
+  margin-left: 25%;
+  padding-bottom: 10px;
+}
+
+#failedmsg{
+  display: none;
+  color: #BB3E5E;
+  margin-left: 25%;
+  padding-bottom: 10px;
+}
+#regfail{
+  display: none;
+  color: #BB3E5E;
+  margin-left: 25%;
+  padding-bottom: 10px;
+}
 
