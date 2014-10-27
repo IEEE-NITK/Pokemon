@@ -1,0 +1,8 @@
+var lib = new localStorageDB("UserPokemon", localStorage);
+
+if(lib.isNew())
+{
+	lib.createTable("UserPokemon", ["pokemon_id", "health", "experience"]);
+
+	lib.commit();
+}

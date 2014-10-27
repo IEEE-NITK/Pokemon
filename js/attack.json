@@ -1,0 +1,56 @@
+var library = new localStorageDB("PokemonDB", localstorage);
+
+if(library.isNew())
+{
+	var row = [ 
+{id: 1,pokemon_id: 8,damage: 10,recoil: 2,name: "Ember"},
+{id: 2,pokemon_id: 8,damage: 20,recoil: 7,name: "Fire Spin"},
+{id: 3,pokemon_id: 11,damage: 10,recoil: 1,name: "Ember"},
+{id: 4,pokemon_id: 11,damage: 20,recoil: 8,name: "Fire Spin"},
+{id: 5,pokemon_id: 9,damage: 30,recoil: 10,name: "Flamethrower"},
+{id: 6,pokemon_id: 9,damage: 20,recoil: 4,name: "Fire Spin"},
+{id: 7,pokemon_id: 12,damage: 30,recoil: 7,name: "Flamethrower"},
+{id: 8,pokemon_id: 12,damage: 30,recoil: 7,name: "Fire Punch"},
+{id: 9,pokemon_id: 10,damage: 50,recoil: 15,name: "Fire Blast"},
+{id: 10,pokemon_id: 10,damage: 40,recoil: 15,name: "Blast Burn"},
+{id: 11,pokemon_id: 14,damage: 30,recoil: 9,name: "Fire Fang"},
+{id: 12,pokemon_id: 14,damage: 40,recoil: 15,name: "Flame Wheel"},
+{id: 13,pokemon_id: 13,damage: 30,recoil: 10,name: "Flamethrower"},
+{id: 14,pokemon_id: 13,damage: 50,recoil: 17,name: "Blaze Kick"},
+{id: 15,pokemon_id: 1,damage: 10,recoil: 2,name: "Razor Leaf"},
+{id: 16,pokemon_id: 1,damage: 20,recoil: 5,name: "Vine Whip"},
+{id: 17,pokemon_id: 4,damage: 10,recoil: 3,name: "Razor Leaf"},
+{id: 18,pokemon_id: 4,damage: 20,recoil: 4,name: "Vine Whip"},
+{id: 19,pokemon_id: 2,damage: 30,recoil: 7,name: "Solar Beam"},
+{id: 20,pokemon_id: 2,damage: 20,recoil: 5,name: "Vine Whip"},
+{id: 21,pokemon_id: 5,damage: 30,recoil: 9,name: "Solar Beam"},
+{id: 22,pokemon_id: 5,damage: 20,recoil: 3,name: "Vine Whip"},
+{id: 23,pokemon_id: 3,damage: 30,recoil: 7,name: "Solar Beam"},
+{id: 24,pokemon_id: 3,damage: 30,recoil: 10,name: "Leaf Blade"},
+{id: 25,pokemon_id: 7,damage: 30,recoil: 8,name: "Solar Beam"},
+{id: 26,pokemon_id: 7,damage: 40,recoil: 11,name: "Leaf Storm"},
+{id: 27,pokemon_id: 6,damage: 30,recoil: 9,name: "Solar Beam"},
+{id: 28,pokemon_id: 6,damage: 50,recoil: 12,name: "Leaf Tornado"},
+{id: 29,pokemon_id: 15,damage: 10,recoil: 1,name: "Bubble"},
+{id: 30,pokemon_id: 15,damage: 20,recoil: 5,name: "Water Gun"},
+{id: 31,pokemon_id: 16,damage: 20,recoil: 2,name: "Water Gun"},
+{id: 32,pokemon_id: 16,damage: 30,recoil: 7,name: "Bubblebeam"},
+{id: 33,pokemon_id: 18,damage: 10,recoil: 1,name: "Bubble"},
+{id: 34,pokemon_id: 18,damage: 20,recoil: 4,name: "Water Gun"},
+{id: 35,pokemon_id: 19,damage: 20,recoil: 3,name: "Water Gun"},
+{id: 36,pokemon_id: 19,damage: 30,recoil: 6,name: "Bubblebeam"},
+{id: 37,pokemon_id: 20,damage: 50,recoil: 10,name: "Surf"},
+{id: 38,pokemon_id: 20,damage: 30,recoil: 7,name: "Muddy Water"},
+{id: 39,pokemon_id: 21,damage: 30,recoil: 7,name: "Waterfall"},
+{id: 40,pokemon_id: 21,damage: 35,recoil: 8,name: "Hydro Pump"},
+{id: 41,pokemon_id: 17,damage: 30,recoil: 7,name: "Waterfall"},
+{id: 42,pokemon_id: 17,damage: 40,recoil: 9,name: "Hydro Cannon"},
+];
+
+library.createTableWithData("Attack", row);
+
+library.commit();
+
+}
+
+
