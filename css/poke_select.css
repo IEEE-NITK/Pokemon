@@ -56,9 +56,7 @@ body{
 
 	
 #pricing-table .signup {
-	position: relative;
-	padding: 8px 20px;
-	margin: 20px 0 0 0;  
+	position: relative; 
 	color: #fff;
 	text-transform: uppercase;
 	text-decoration: none;
