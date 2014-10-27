@@ -1,11 +1,15 @@
 var pokemondb = new localStorageDB("PokemonDB", localStorage);
 Pokemon = function(id, bot) {
-	this.id = id;
 	this.bot = bot;
-	if (bot)
+	if (bot){
 		this.pokemon = pokemondb.query("Pokemon", {id: id})[0];
-	else
+		this.id = id;
+	}
+	else{
 		this.pokemon = pokemondb.query("UserPokemon", {ID: id})[0];
+		this.id = this.pokemon.pokemon_id;
+	}
+
 	this.hp = this.pokemon.health;
 	console.log("HEALTH = "+ this.hp);
 }
