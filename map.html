@@ -48,18 +48,18 @@
             </div>
             <div id="controls" style="width: 150px;height: 150px;position: fixed;bottom: 0;left: 0;">
                     <div id="top">
-                        <img width="25%" src="pacman_files/circle.png">
+                        <img width="25%" src="img/circle.png">
                     </div>
                     <div style="margin-top: 8%;" class="medium">
                         <span id="left">
-                            <img style="margin-left: 0%;" width="25%" src="pacman_files/circle.png">
+                            <img style="margin-left: 0%;" width="25%" src="img/circle.png">
                         </span>
                         <span id="right">
-                            <img style="margin-left: 45%;" width="25%" src="pacman_files/circle.png">
+                            <img style="margin-left: 45%;" width="25%" src="img/circle.png">
                         </span>
                     </div>
                     <div id="bottom">
-                        <img style="margin-top: 5%" width="25%" src="pacman_files/circle.png">
+                        <img style="margin-top: 5%" width="25%" src="img/circle.png">
                     </div>
                 </div>
             <!-- <h1>PhoneGap</h1>
@@ -69,14 +69,14 @@
             </div> -->
         </div>
         <div id="pacman" style="position: absolute;z-index: 100px;top: 40px;left: 20px;clear: both;">
-            <img src="img/f1.gif" />
+            <img src="img/1.png" />
         </div>
         <!-- // <script type="text/javascript" src="cordova.js"></script> -->
 
         <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.4.min.js"></script>
-        <script type="text/javascript" src="./pacman_files/move.min.js"></script>
+        <script type="text/javascript" src="js/move.min.js"></script>
         <!-- // <script type="text/javascript" src="js/index.js"></script> -->
 
         <script type="text/javascript">
@@ -125,6 +125,7 @@
             // Right
             $("#right").on("vmousedown", function(event){
               clearInterval(window["hand_event"]);
+              $('#pacman').find("img").attr('src','img/3.png');
               window["hand_event"]=setInterval(function(){
                 moveTo($("#map"), -1,0);
                 console.log("Right");
@@ -137,6 +138,7 @@
 
             // Left
             $("#left").on("vmousedown", function(event){
+                $('#pacman').find("img").attr('src','img/2.png');
               clearInterval(window["hand_event"]);
               window["hand_event"]=setInterval(function(){
                 moveTo($("#map"), 1,0);
@@ -150,6 +152,7 @@
 
             // Top
             $("#top").on("vmousedown", function(event){
+                $('#pacman').find("img").attr('src','img/4.png');
               clearInterval(window["hand_event"]);
               window["hand_event"]=setInterval(function(){
                 moveTo($("#map"), 0,1);
@@ -163,6 +166,7 @@
 
             // Bottom
             $("#bottom").on("vmousedown", function(event){
+                $('#pacman').find("img").attr('src','img/1.png');
               clearInterval(window["hand_event"]);
               window["hand_event"]=setInterval(function(){
                 moveTo($("#map"), 0,-1);
@@ -195,14 +199,11 @@
             var pos_x = (pacman.cellX + xincr);
             var pos_y = (pacman.cellY + yincr);
             console.log("PACMAN IS AT = "+ pos_x + "Y = "+ pos_y);
-            if (pos_x <= 0 && pos_y <= 0 && pos_x < 60 && pos_y < 33 && map[-pos_y][-pos_x]!=lpost && map[-pos_y][-pos_x]!=mb && map[-pos_y][-pos_x]!=hcc && map[-pos_y][-pos_x]!=ccc && map[-pos_y][-pos_x]!=lib)
+            if (pos_x <= 0 && pos_y <= 0 && pos_x < 60 && pos_y < 33 && map[-pos_y][-pos_x]!=lpost && map[-pos_y][-pos_x]!=mb && map[-pos_y][-pos_x]!=hcc && map[-pos_y][-pos_x]!=ccc && map[-pos_y][-pos_x]!=lib && map[-pos_y][-pos_x]!=plant &&map[-pos_y][-pos_x]!=lpost &&map[-pos_y][-pos_x]!=fountain &&map[-pos_y][-pos_x]!=srock)
                 pacman.moveTo(xincr, yincr);
         }
 
         </script>
-
-        <script type="text/javascript">
-            // app.initialize();
-        </script>
+        <script type="text/javascript" src="js/scroll.js"></script>
     </body>
 </html>

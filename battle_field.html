@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/poke_select.css">
+<style type="text/css">
+
+.myButton {
+  background-color:#53bdab;
+  border-radius:5px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:20px;
+  width: 80%;
+  height: 50px;
+  /*padding:15px 56px;*/
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+</style>
+<script type="text/javascript" src="js/localstoragedb.js"></script>
+ <script type="text/javascript">
+  // var emailid = window.localStorage.getItem('emailid');
+  // var auth_token = window.localStorage.getItem('authentication_token');
+  // var my_pokemon = window.localStorage.getItem('user_pokemon');
+  // if(emailid!=undefined && auth_token!=undefined && my_pokemon!=undefined)
+  //  {window.location.href="map.html";}
+var my_poke = window.localStorage.getItem('currentpokemon');
+var pokemondb = new localStorageDB("pokemonDB", localStorage);
+var attacks;
+pokemondb.query("pokemon", function(row) { 
+   // the callback function is applied to every row in the table
+   if(row.poke_id==my_poke){
+     
+      attacks+='<li><button class="myButton">'+row.poke_id.attack+'</button></li>';
+      }
+        });
+      var pokehtml ='<div><img src="img/poke_name.png" style="height:100px;"></div> <p class="signup" style="font-size:17px;"></p><p>HP :</p><p>XP :</p><ul></ul>';
+      $('#test1').append(pokehtml);
+</script>
+<script type="text/javascript" src="js/connect.js"></script>
+</head>
+<body>
+  <div id="choose" style="background-color:#47C295;text-align:center;"><h2 style="color:white;">Battle Field</h2></div>
+<div id="pricing-table" class="clear">
+    <div class="plan" id="test1">
+        <div><img src="img/bulbasaur.png" style="height:100px;"></div>
+        <p class="signup" style="font-size:17px;">Bulbasaur</p> 
+        <p>HP : </p><p>XP :</p>        
+        <ul>
+            <li><button class="myButton">Attack</button></li>
+            <li>HP</li>
+            <li>Attacks</li>
+      <li>Weakness</li>     
+        </ul> 
+    </div>
+    <p style="color:white;float:left;margin-left:5%;margin-top:10%;font-size:30px;">v/s</p>
+        <div class="plan" style="margin-left:6%;" id="test2">
+        <div><img src="img/squirtle.png" style="height:100px;"></div>
+        <p class="signup" style="font-size:17px;">Squirtle</p>         
+        <ul>
+            <li>Water</li>
+            <li>HP</li>
+            <li>Attacks</li>
+      <li>Weakness</li>     
+        </ul> 
+    </div>
+
+</div>
+</body>
+</html>
