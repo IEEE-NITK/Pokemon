@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pokemon - Health</title>
+<link rel="stylesheet" href="css/loginstyle.css" media="screen" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/connect.js"></script>
+<script type="text/javascript">
+	// var emailid = window.localStorage.getItem('emailid');
+	// var auth_token = window.localStorage.getItem('authentication_token');
+	// if(emailid!=undefined && auth_token!=undefined)
+	// 	{window.location.href="map.html";}
+</script>
+<script type="text/javascript" src="js/localstoragedb.js"></script>
+
+</head>
+<body>
+	 <div class="login-wrap" style="margin-top:4%;">
+  <h2>Pokemon Health</h2>
+
+  <div class="form">
+    <div id="pokemonlist">
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/connect.js"></script>
+<script type="text/javascript">
+//   var emailid = window.localStorage.getItem('emailid');
+//     var auth_token = window.localStorage.getItem('authentication_token');
+//     $.ajax( {
+//         url: url,
+//         type: 'POST',
+//         data: {
+//           "user":       {
+//                      "email": emailid,
+//                      "authentication_token": auth_token
+//                  }
+//         },
+//         complete: function(data){
+//           if(data.status==200)
+//           {
+//           try{
+//           var obj=JSON.parse(data.responseText);
+//           if(obj.email!=undefined)
+//           {
+//             // localStorage.setItem('emailid',obj.email);
+//             // localStorage.setItem('authentication_token',obj.authentication_token);
+//             // window.location.href="map.html"
+//           }
+//         }
+//         catch(e){
+          
+//         }
+//       }
+//         },
+//         error : function(){
+//           console.log('Error');
+//         }
+//     });
+
+var pokemondb = new localStorageDB("pokemonDB", localStorage);
+pokemondb.createTable("pokemon", ["poke_id", "poke_name"]);
+pokemondb.insert("pokemon", {poke_id: "1", poke_name:"bulbasaur"});
+pokemondb.insert("pokemon", {poke_id: "2", poke_name:"squirtle"});
+pokemondb.query("pokemon", function(row) { 
+   // the callback function is applied to every row in the table
+   var pokehtml = '<div id="pokemon"><div id="poke_img" style="text-align:center;"><img src="img/'+row.poke_name+'.png"></div><div id="poke_button"><p style="width:100%;font-size:25px;text-align:center;" id="pokemon_name">'+row.poke_name+'</p><p style="width:100%;font-size:15px;text-align:center;">HP : '+row.poke_health+'</p><p style="width:100%;font-size:15px;text-align:center;">XP : '+row.poke_xp+'</p></div></div><hr><br>';
+    $('#pokemonlist').append(pokehtml);
+});
+  var pokehtml = '<div id="poke_button" style="margin-left:20%;"><button style="width:50%;" onclick="return_map();">Return to map</button></div>';
+    $('#pokemonlist').append(pokehtml);
+</script>
+<style type="text/css">
+#pokemon_name{
+  text-transform: uppercase;
+}
+</style>
+<script type="text/javascript">
+var return_map = function()
+{
+  window.location.href="index.html";
+}
+</script>
+</body>
+</html>
