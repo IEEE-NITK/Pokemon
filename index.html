@@ -74,135 +74,111 @@
         <!-- // <script type="text/javascript" src="cordova.js"></script> -->
 
         <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/localstoragedb.min.js"></script>
+        <script type="text/javascript" src="js/createdb.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/move.min.js"></script>
         <!-- // <script type="text/javascript" src="js/index.js"></script> -->
 
         <script type="text/javascript">
-        
-        // $(".app").on("taphold",function(event){
-        //     alert('TAP HELD');
-        //     console.log(event);
-        // });
-        
-        // var map=[
-        // [0,1,0,0,0,0],
-        // [0,1,,1,1,1],
-        // [0,1,,1,1,1],
-        // [0,1,,1,1,1],
-        // ]
-
         var hand_event = 0;
         var CELL_WIDTH_HEIGHT = 32;
 
+        // Right
+        $("#right").on("vmousedown", function(event){
+          clearInterval(window["hand_event"]);
+          $('#pacman').find("img").attr('src','img/3.png');
+          window["hand_event"]=setInterval(function(){
+            moveTo($("#map"), -1,0);
+            console.log("Right");
+          }, 300);
+        });
 
+        $("#right").on("vmouseup", function(event){
+            clearInterval(window["hand_event"]);
+        });
 
-            // $("#right").on("click", function () {
-            //     moveTo($("#map"), -1,0);
-            //     console.log("Right");
-            // })
-    
+        // Left
+        $("#left").on("vmousedown", function(event){
+            $('#pacman').find("img").attr('src','img/2.png');
+          clearInterval(window["hand_event"]);
+          window["hand_event"]=setInterval(function(){
+            moveTo($("#map"), 1,0);
+            console.log("left");
+          }, 300);
+        });
 
-            // $("#left").on("click", function () {
-            //     moveTo($("#map"), 1,0);
-            //     console.log("Right");
-            // })
+        $("#left").on("vmouseup", function(event){
+            clearInterval(window["hand_event"]);
+        });
 
-            // $("#top").on("click", function () {
-            //     moveTo($("#map"), 0,1);
-            //     console.log("Right");
-            // })
+        // Top
+        $("#top").on("vmousedown", function(event){
+            $('#pacman').find("img").attr('src','img/4.png');
+          clearInterval(window["hand_event"]);
+          window["hand_event"]=setInterval(function(){
+            moveTo($("#map"), 0,1);
+            console.log("Top");
+          }, 300);
+        });
 
-            // $("#bottom").on("click", function () {
-            //     moveTo($("#map"), 0,-1);
-            //     console.log("Right");
-            // })
+        $("#top").on("vmouseup", function(event){
+            clearInterval(window["hand_event"]);
+        });
 
+        // Bottom
+        $("#bottom").on("vmousedown", function(event){
+            $('#pacman').find("img").attr('src','img/1.png');
+          clearInterval(window["hand_event"]);
+          window["hand_event"]=setInterval(function(){
+            moveTo($("#map"), 0,-1);
+            console.log("Down");
+          }, 300);
+        });
 
+        $("#bottom").on("vmouseup", function(event){
+            clearInterval(window["hand_event"]);
+        });
 
+    function Pacman(){
+        this.cellX = 0;
+        this.cellY = 0;
+    }
 
-            // Right
-            $("#right").on("vmousedown", function(event){
-              clearInterval(window["hand_event"]);
-              $('#pacman').find("img").attr('src','img/3.png');
-              window["hand_event"]=setInterval(function(){
-                moveTo($("#map"), -1,0);
-                console.log("Right");
-              }, 300);
-            });
+    Pacman.prototype.moveTo = function(xincr, yincr) {
+        this.cellX += xincr;
+        this.cellY += yincr;
+        console.log("X = "+ this.cellX + "Y = "+ this.cellY);
+        move("#map").x((this.cellX)*CELL_WIDTH_HEIGHT).y((this.cellY)*CELL_WIDTH_HEIGHT).end();
+    }
 
-            $("#right").on("vmouseup", function(event){
-                clearInterval(window["hand_event"]);
-            });
+    var pacman = new Pacman();
 
-            // Left
-            $("#left").on("vmousedown", function(event){
-                $('#pacman').find("img").attr('src','img/2.png');
-              clearInterval(window["hand_event"]);
-              window["hand_event"]=setInterval(function(){
-                moveTo($("#map"), 1,0);
-                console.log("left");
-              }, 300);
-            });
+    function moveTo(element, xincr, yincr){
+        var number=0;
+        var column=0;
+        var pos_x = (pacman.cellX + xincr);
+        var pos_y = (pacman.cellY + yincr);
+        console.log("PACMAN IS AT = "+ pos_x + "Y = "+ pos_y);
+        check_if_pokemon(-pos_y, -pos_x);
+        if (pos_x <= 0 && pos_y <= 0 && pos_x < 60 && pos_y < 33 && map[-pos_y][-pos_x]!=lpost && map[-pos_y][-pos_x]!=mb && map[-pos_y][-pos_x]!=hcc && map[-pos_y][-pos_x]!=ccc && map[-pos_y][-pos_x]!=lib && map[-pos_y][-pos_x]!=plant &&map[-pos_y][-pos_x]!=lpost &&map[-pos_y][-pos_x]!=fountain &&map[-pos_y][-pos_x]!=srock)
+            pacman.moveTo(xincr, yincr);
+    }
 
-            $("#left").on("vmouseup", function(event){
-                clearInterval(window["hand_event"]);
-            });
-
-            // Top
-            $("#top").on("vmousedown", function(event){
-                $('#pacman').find("img").attr('src','img/4.png');
-              clearInterval(window["hand_event"]);
-              window["hand_event"]=setInterval(function(){
-                moveTo($("#map"), 0,1);
-                console.log("Top");
-              }, 300);
-            });
-
-            $("#top").on("vmouseup", function(event){
-                clearInterval(window["hand_event"]);
-            });
-
-            // Bottom
-            $("#bottom").on("vmousedown", function(event){
-                $('#pacman').find("img").attr('src','img/1.png');
-              clearInterval(window["hand_event"]);
-              window["hand_event"]=setInterval(function(){
-                moveTo($("#map"), 0,-1);
-                console.log("Down");
-              }, 300);
-            });
-
-            $("#bottom").on("vmouseup", function(event){
-                clearInterval(window["hand_event"]);
-            });
-        // });
-
-        function Pacman(){
-            this.cellX = 0;
-            this.cellY = 0;
+    function check_if_pokemon(x,y) {
+        if (pokemon_map[String(x)] != undefined)
+        {
+            console.log("HERREEE");
+            if (pokemon_map[String(x)][String(y)] != undefined)
+            {
+                console.log("HERREEE INSIDEDDD");
+                id = pokemon_map[String(x)][String(y)]
+                poke = pokemondb.query("Pokemon", {id: id})[0]
+                confirm("You found "+poke.name+" Do you want to capture it?");
+            }
         }
-
-        Pacman.prototype.moveTo = function(xincr, yincr) {
-            this.cellX += xincr;
-            this.cellY += yincr;
-            console.log("X = "+ this.cellX + "Y = "+ this.cellY);
-            move("#map").x((this.cellX)*CELL_WIDTH_HEIGHT).y((this.cellY)*CELL_WIDTH_HEIGHT).end();
-        }
-
-        var pacman = new Pacman();
-
-        function moveTo(element, xincr, yincr){
-            var number=0;
-            var column=0;
-            var pos_x = (pacman.cellX + xincr);
-            var pos_y = (pacman.cellY + yincr);
-            console.log("PACMAN IS AT = "+ pos_x + "Y = "+ pos_y);
-            if (pos_x <= 0 && pos_y <= 0 && pos_x < 60 && pos_y < 33 && map[-pos_y][-pos_x]!=lpost && map[-pos_y][-pos_x]!=mb && map[-pos_y][-pos_x]!=hcc && map[-pos_y][-pos_x]!=ccc && map[-pos_y][-pos_x]!=lib && map[-pos_y][-pos_x]!=plant &&map[-pos_y][-pos_x]!=lpost &&map[-pos_y][-pos_x]!=fountain &&map[-pos_y][-pos_x]!=srock)
-                pacman.moveTo(xincr, yincr);
-        }
-
+    }
         </script>
         <script type="text/javascript" src="js/scroll.js"></script>
     </body>
