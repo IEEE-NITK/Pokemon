@@ -3,13 +3,15 @@
 
 <head>
 <link rel="stylesheet" type="text/css" href="css/poke_select.css">
+<script type="text/javascript" src="js/localstoragedb.min.js"></script>
+<script type="text/javascript" src="js/createdb.js"></script>
 <script type="text/javascript">
-	var emailid = window.localStorage.getItem('emailid');
-	var auth_token = window.localStorage.getItem('authentication_token');
-	var my_pokemon = window.localStorage.getItem('user_pokemon');
-	if(emailid!=undefined && auth_token!=undefined && my_pokemon!=undefined)
+
+	if(lib.query('UserPokemon').tableCount!=0)
 		{window.location.href="map.html";}
 </script>
+<script type="text/javascript" src="js/localstoragedb.min.js"></script>
+<script type="text/javascript" src="js/createdb.js"></script>
 <script type="text/javascript" src="js/connect.js"></script>
 </head>
 <body>
@@ -17,7 +19,7 @@
 <div id="pricing-table" class="clear">
     <div class="plan">
         <div><img src="img/bulbasaur.png" style="height:100px;"></div>
-        <button class="signup" onclick="select_pokemon(url,1);">Bulbasaur</button>         
+        <button class="signup" onclick="select_pokemon(1);">Bulbasaur</button>         
         <ul>
             <li>Grass</li>
             <li>HP</li>
@@ -27,7 +29,7 @@
     </div>
         <div class="plan">
         <div><img src="img/squirtle.png" style="height:100px;"></div>
-        <button class="signup" onclick="select_pokemon(url,2);">Squirtle</button>         
+        <button class="signup" onclick="select_pokemon(15);">Squirtle</button>         
         <ul>
             <li>Water</li>
             <li>HP</li>
@@ -37,7 +39,7 @@
     </div>
         <div class="plan">
         <div><img src="img/charmander.png" style="height:100px;"></div>
-        <button class="signup" onclick="select_pokemon(url,3);">Charmander</button>         
+        <button class="signup" onclick="select_pokemon(8);">Charmander</button>         
         <ul>
             <li>Fire</li>
             <li>HP</li>
