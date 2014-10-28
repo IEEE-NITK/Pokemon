@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/poke_select.css">
+<script type="text/javascript" src="js/localstoragedb.min.js"></script>
+<script type="text/javascript" src="js/createdb.js"></script>
+<script type="text/javascript">
+    if(window.localStorage.getItem("newUser")!=undefined)
+    {
+        window.location.href="item.html";
+    }
+</script>
+<script type="text/javascript" src="js/localstoragedb.min.js"></script>
+<script type="text/javascript" src="js/createdb.js"></script>
+<script type="text/javascript" src="js/connect.js"></script>
+</head>
+<body>
+    <div id="choose" style="background-color:#47C295;text-align:center;"><h2 style="color:white;">Pokemon Rules</h2></div>
+<div id="pricing-table" class="clear">
+    <div class="plan" style="width:100%;margin-left:0;">
+         
+        <ul>
+            <li>You are Ash Ketchum !</li>
+            <li>You begin by selecting your first pokemon</li>
+            <li>Wander around the NITK map searching and capturing pokemon</li>
+            <li>Head over to HCC to restore all your pokemon's health</li>
+            <li>Gotta Catch'em All</li>              
+        </ul> 
+        <button class="signup" onclick="begin_play();">Let's Play</button> 
+    </div>
+       
+</div>
+<script type="text/javascript">
+    var begin_play = function(){
+        window.localStorage.setItem("newUser",1);
+        window.location.href="item.html";
+    };
+</script>
+</body>
+</html>
