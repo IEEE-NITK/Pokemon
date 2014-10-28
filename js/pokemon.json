@@ -1,0 +1,39 @@
+
+
+var lib = new localStorageDB("pokemon", localstorage);
+
+if(lib.isNew())
+{
+	lib.createTable("pokemon",["id","name","health","image","category_id"]);
+
+	var rows = [
+
+		{id: 1,name: 'Bulbasaur', health: 100, image: "bulbasaur.png", category_id: 1,experience: 500},
+		{id: 2,name: 'Ivysaur', health: 200, image: "ivysaur.png", category_id: 1,experience: 1000},
+		{id: 3,name: 'Venusaur', health: 300, image: "venusaur.png", category_id: 1,experience: 1500},
+		{id: 4,name: 'Treecko', health: 100, image: "treecko.png", category_id: 1,experience: 500},
+		{id: 5,name: 'Grovyle', health: 200, image: "grovyle.png", category_id: 1,experience: 1000},
+		{id: 6,name: 'Sceptile', health: 300, image: "sceptile.png", category_id: 1,experience: 1500},
+		{id: 7,name: 'Meganium', health: 300, image: "meganium.png", category_id: 1,experience: 1500},
+		{id: 8,name: 'Charmander', health: 100, image: "charmander.png", category_id: 2,experience: 500},
+		{id: 9,name: 'Charmeleon', health: 200, image: "charmeleon.png", category_id: 2,experience: 1000},
+		{id: 10,name: 'Charizard', health: 300, image: "charizard.png", category_id: 2,experience: 1500},
+		{id: 11,name: 'Torchic', health: 100, image: "torchic.png", category_id: 2,experience: 500},
+		{id: 12,name: 'Combusken', health: 200, image: "combusken.png", category_id: 2,experience: 1000},
+		{id: 13,name: 'Blaziken', health: 300, image: "blaziken.png", category_id: 2,experience: 1500},
+		{id: 14,name: 'Typhlosion', health: 300, image: "typhlosion.png", category_id: 2,experience: 1500},
+		{id: 15,name: 'Squirtle', health: 100, image: "squirtle.png", category_id: 3,experience: 500},
+		{id: 16,name: 'Watortle', health: 200, image: "watortle.png", category_id: 3,experience: 1000},
+		{id: 17,name: 'Blastoise', health: 300, image: "blastoise.png", category_id: 3,experience: 1500},
+		{id: 18,name: 'Mudkip', health: 100, image: "mudkip.png", category_id: 3,experience: 500},
+		{id: 19,name: 'Marshtomp', health: 200, image: "marshtomp.png", category_id: 3,experience: 1000},
+		{id: 20,name: 'Swampert', health: 300, image: "swampert.png", category_id: 3,experience: 1500},
+		{id: 21,name: 'Feraligatr', health: 300, image: "feraligatr.png", category_id: 3,experience: 1500},
+
+];
+
+
+	lib.createTableWithData("pokemon", rows);
+
+	lib.commit();
+}
